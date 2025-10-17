@@ -6,7 +6,8 @@ import (
 	"net/http"
 	"time"
 
-	domainPage "notion-clone-go/internal/domain/page"
+	domainPage "github.com/SeregaZnam/notion-clone-go/internal/domain/page"
+	domainTextBlock "github.com/SeregaZnam/notion-clone-go/internal/domain/text_block"
 
 	"github.com/gin-gonic/gin"
 	"github.com/jackc/pgx/v5/pgxpool"
@@ -14,14 +15,6 @@ import (
 
 type Handler struct {
 	db *pgxpool.Pool
-}
-
-type textBlock struct {
-	ID     int    `json:"id,omitempty"`
-	Text   string `json:"text"`
-	PageId int    `json:"page_id"`
-	Order  int    `json:"order"`
-	Type   string `json:"type"`
 }
 
 func NewRepository(db *pgxpool.Pool) *Handler {
@@ -88,7 +81,7 @@ func (h *Handler) AddTextBlocks(c *gin.Context) {
 	ctx, cancel := context.WithTimeout(c.Request.Context(), 5*time.Second)
 	defer cancel()
 
-	var textBlock textBlock
+	var textBlock domainTextBlock.TextBlock
 	if err := c.ShouldBindJSON(&textBlock); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid request body"})
 		return

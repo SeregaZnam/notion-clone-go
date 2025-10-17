@@ -1,4 +1,4 @@
-module notion-clone-go
+module github.com/SeregaZnam/notion-clone-go
 
 go 1.24.0
 

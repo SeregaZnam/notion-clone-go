@@ -1,9 +1,9 @@
 package api
 
 import (
-	middleware "notion-clone-go/internal/api/middleware"
-	"notion-clone-go/internal/api/notion"
-	"notion-clone-go/internal/env"
+	middleware "github.com/SeregaZnam/notion-clone-go/internal/api/middleware"
+	"github.com/SeregaZnam/notion-clone-go/internal/api/notion"
+	"github.com/SeregaZnam/notion-clone-go/internal/env"
 
 	"github.com/gin-gonic/gin"
 )

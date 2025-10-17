@@ -5,12 +5,13 @@ import (
 	"fmt"
 	"log/slog"
 	"net/http"
-	"notion-clone-go/internal/api"
-	"notion-clone-go/internal/env"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
+
+	"github.com/SeregaZnam/notion-clone-go/internal/api"
+	"github.com/SeregaZnam/notion-clone-go/internal/env"
 )
 
 const serverReadTimeout = 60 * time.Second

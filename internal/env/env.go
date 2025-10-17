@@ -2,8 +2,9 @@ package env
 
 import (
 	"context"
-	notionApi "notion-clone-go/internal/api/notion"
-	database "notion-clone-go/internal/database"
+
+	notionApi "github.com/SeregaZnam/notion-clone-go/internal/api/notion"
+	database "github.com/SeregaZnam/notion-clone-go/internal/database"
 
 	"github.com/jackc/pgx/v5/pgxpool"
 )
