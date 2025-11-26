@@ -1,8 +1,9 @@
 package api
 
 import (
+	"github.com/SeregaZnam/notion-clone-go/internal/api/handlers/notion"
+	"github.com/SeregaZnam/notion-clone-go/internal/api/handlers/page"
 	middleware "github.com/SeregaZnam/notion-clone-go/internal/api/middleware"
-	"github.com/SeregaZnam/notion-clone-go/internal/api/notion"
 	"github.com/SeregaZnam/notion-clone-go/internal/env"
 
 	"github.com/gin-gonic/gin"
@@ -16,14 +17,17 @@ func NewAPI(e *env.Env) *gin.Engine {
 	r.GET("/", Health)
 
 	registerNotionRoutes(r, e.NotionHandler)
+	registerPageRoutes(r, e.PageHandler)
 
 	return r
 }
 
-func registerNotionRoutes(r *gin.Engine, h *notion.Handler) {
+func registerPageRoutes(r *gin.Engine, h *page.Handler) {
 	r.GET("/pages", h.GetPages)
-	r.POST("/pages", h.AddPage)
+	r.POST("/pages", h.CreatePage)
+}
 
+func registerNotionRoutes(r *gin.Engine, h *notion.Handler) {
 	r.GET("/text-blocks", h.GetTextBlocks)
 	r.POST("/text-blocks", h.AddTextBlocks)
 }
