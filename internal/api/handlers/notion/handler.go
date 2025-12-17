@@ -29,6 +29,7 @@ func (h *Handler) GetTextBlocks(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to query pages"})
 		return
 	}
+
 	defer rows.Close()
 
 	var pages []domainPage.Page
